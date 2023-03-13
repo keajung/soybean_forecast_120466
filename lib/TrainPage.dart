@@ -59,9 +59,9 @@ class _MyHomePageState extends State<MyHomePage> {
       final splitted = month_fromexcel.split(' ');
       var MONTHS = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"];
       for(int i=0; i<MONTHS.length;++i){
-         if(splitted[0]==MONTHS[i]){
-           valueMonth = i+1;
-         }
+        if(splitted[0]==MONTHS[i]){
+          valueMonth = i+1;
+        }
       }
 
       valueYear=  int.parse(splitted[1]);
@@ -110,10 +110,10 @@ class _MyHomePageState extends State<MyHomePage> {
       if( _selectedIndex == 0){
         Navigator.of(this.context).push(MaterialPageRoute(builder: (context) => MyApp()));
       }
-      // else if( _selectedIndex == 1){
-      //   Navigator.of(this.context).push(MaterialPageRoute(builder: (context) => TrainPage(text: ,))); //Navigator.of(context).push(MaterialPageRoute(builder: (context) => TrainPage()));
-      //
-      // }
+      else if( _selectedIndex == 1){
+        Navigator.of(this.context).push(MaterialPageRoute(builder: (context) => TrainPage())); //Navigator.of(context).push(MaterialPageRoute(builder: (context) => TrainPage()));
+
+      }
     });
   }
   void dispose1() {
@@ -125,7 +125,6 @@ class _MyHomePageState extends State<MyHomePage> {
     super.dispose();
   }
   void showDialogUpdate(BuildContext context) async {
-
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -151,14 +150,16 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         actions: [
           TextButton(
-            child: Text("ตกลง",
-              style: GoogleFonts.mitr(
-                textStyle: TextStyle(
-                    color: Colors.green,
-                    fontSize: 22.0),
+              child: Text("ตกลง",
+                style: GoogleFonts.mitr(
+                  textStyle: TextStyle(
+                      color: Colors.green,
+                      fontSize: 22.0),
+                ),
               ),
-            ),
-            onPressed: () => Navigator.pop(context),
+              onPressed: () => {
+                Navigator.pop(context)
+              }
           ),
         ],
 
@@ -167,12 +168,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   }
 
-
-
   void showDialogTrain(BuildContext contextUpdate) async {
-    if(Data!=''){
-      Navigator.popUntil(contextUpdate, (route) => route.settings.name == "TrainPage");
-    }
     showDialog(
       context: contextUpdate,
       builder: (contextUpdate) => AlertDialog(
@@ -222,6 +218,7 @@ class _MyHomePageState extends State<MyHomePage> {
               textTrain = 'กำลังเทรนโมเดล กรุณารอสักครู่';
               nameImgTrain = 'cupertino_activity.gif';
               Navigator.pop(contextUpdate);
+
             },
 
           ),
@@ -387,7 +384,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                               color: Colors.blue,
                                               fontSize: 18.0),
                                         ),
-                                          border: InputBorder.none,
+                                        border: InputBorder.none,
                                       ),
                                       style: GoogleFonts.mitr(
                                         textStyle: TextStyle(
@@ -559,7 +556,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 20),
                   child: Container(
-                    width: 685,
+                    width: 663,
                     height: 160,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
@@ -584,6 +581,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
+
                                   Container(
                                     height: 60,
                                     alignment: Alignment.center,
@@ -599,8 +597,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           ),
                                         ),
                                         onPressed: () async {
-
-                                          showDialogTrain(context);
+                                          // showDialogTrain(context);
                                           url = "http://127.0.0.1:5000/train_model?";
                                           print(url);
                                           Data = await Getdata(url);
