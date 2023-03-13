@@ -53,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
           fontSize: 16.0),
     ),
   );
-
+  bool mounted = true;
   int _selectedIndex = 0;
   final _formKey = GlobalKey<FormState>();
   final _text1 = TextEditingController();  //textediting
@@ -83,11 +83,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _onItemTapped(int index) {
     setState(() async {
-
-
-
-
-
       _selectedIndex = index;
       print( _selectedIndex);
       if( _selectedIndex == 0){
@@ -113,47 +108,37 @@ class _MyHomePageState extends State<MyHomePage> {
     _text2.dispose();
     super.dispose();
   }
-  void _fetchData(BuildContext context, [bool mounted = true]) async {
+  void fetchData(BuildContext context) async {
     // show the loading dialog
     showDialog(
-      // The user CANNOT close this dialog  by pressing outsite it
-        barrierDismissible: false,
         context: context,
-        builder: (_) {
-          return Dialog(
-            // The background color
-            backgroundColor: Colors.white,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  // The loading indicator
-                  CircularProgressIndicator(),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  // Some text
-                  Text('โปรดรอสักครู่',
-                    textAlign: TextAlign.start,
-                    style: GoogleFonts.mitr(
-                      textStyle: TextStyle(
-                          color: Colors.black,
-                          fontSize: 18.0),
-                    ),)
-                ],
-              ),
+        builder: (context) {
+          Future.delayed(Duration(seconds: 5), () {
+            Navigator.of(context).pop(true);
+          });
+          return AlertDialog(
+            title:   Text('โปรดรอสักครู่',
+              textAlign: TextAlign.center,
+              style: GoogleFonts.mitr(
+                textStyle: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18.0),
+              ),),
+            content: Stack(
+              alignment: Alignment.center,
+              children: [
+                Container(
+                    alignment: Alignment.center,
+                    width: 100, height: 100,
+                    child: Image.asset('asset/images/cupertino_activity.gif', height: 270, width: 270,)),
+              ],
             ),
           );
         });
 
     // Your asynchronous computation here (fetching data from an API, processing files, inserting something to the database, etc)
-    await Future.delayed(const Duration(seconds: 5));
-
     // Close the dialog programmatically
     // We use "mounted" variable to get rid of the "Do not use BuildContexts across async gaps" warning
-    if (!mounted) return;
-    Navigator.of(context).pop();
 
 
   }
@@ -547,7 +532,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                             url =
                                             "http://127.0.0.1:5000/predict_model?Soybean_meal_US=$valueUs&Crude_Oil=$valueOil&New_Month=$valueMonth&Year=$valueYear";
                                             print(url);
-                                            _fetchData(context);
+                                            fetchData(context);
                                             Data = await Getdata(url);
                                             var DecodedData = jsonDecode(Data);
                                             print('DecodedData $DecodedData');

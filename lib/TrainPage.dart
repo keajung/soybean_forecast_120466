@@ -110,10 +110,10 @@ class _MyHomePageState extends State<MyHomePage> {
       if( _selectedIndex == 0){
         Navigator.of(this.context).push(MaterialPageRoute(builder: (context) => MyApp()));
       }
-      else if( _selectedIndex == 1){
-        Navigator.of(this.context).push(MaterialPageRoute(builder: (context) => TrainPage())); //Navigator.of(context).push(MaterialPageRoute(builder: (context) => TrainPage()));
-
-      }
+      // else if( _selectedIndex == 1){
+      //   Navigator.of(this.context).push(MaterialPageRoute(builder: (context) => TrainPage(text: ,))); //Navigator.of(context).push(MaterialPageRoute(builder: (context) => TrainPage()));
+      //
+      // }
     });
   }
   void dispose1() {
@@ -157,9 +157,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       fontSize: 22.0),
                 ),
               ),
-              onPressed: () => {
-                Navigator.pop(context)
-              }
+              onPressed: () => {}
           ),
         ],
 
