@@ -20,6 +20,8 @@ class TrainPage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return MaterialApp(
+      debugShowCheckedModeBanner:false ,
+
       title: 'train interface',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -60,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
       var MONTHS = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"];
       for(int i=0; i<MONTHS.length;++i){
         if(splitted[0]==MONTHS[i]){
-          valueMonth = i+1;
+          valueMonth = i;
         }
       }
 
@@ -157,7 +159,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       fontSize: 22.0),
                 ),
               ),
-              onPressed: () => {}
+              onPressed: () => {Navigator.pop(context)}
           ),
         ],
 
@@ -565,7 +567,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('กดปุ่มด้านล่างเพื่อเทรนโมเดล',style: GoogleFonts.mitr(
+                          Text('กดปุ่มด้านล่างเพื่อฝึกฝนแบบจำลอง (Train Model)',style: GoogleFonts.mitr(
                             textStyle: TextStyle(
                                 color: Colors.black87,
                                 fontSize: 18.0),

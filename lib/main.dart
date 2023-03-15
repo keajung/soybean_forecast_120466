@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return MaterialApp(
+      debugShowCheckedModeBanner:false ,
       title: 'interface',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -256,7 +257,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child:  Container(
                     alignment: Alignment.bottomCenter,
                     width: 685,
-                    height: 390,
+                    height: 430,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       color: Colors.amber.shade300,
@@ -271,8 +272,9 @@ class _MyHomePageState extends State<MyHomePage> {
                               children: [
                                 Container(
                                   width: 260,
+                                  height:83,
                                   child: Expanded(
-                                    child: Text('ราคากากถั่วเหลืองของสหรัฐอเมริกา ',style: GoogleFonts.mitr(
+                                    child: Text('กรอกราคาปัจจุบันของราคา\nกากถั่วเหลืองของสหรัฐอเมริกา',style: GoogleFonts.mitr(
                                       textStyle: TextStyle(
                                           color: Colors.black87,
                                           fontSize: 18.0),
@@ -280,7 +282,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     ),
                                   ),
                                 ),
-                                SizedBox(width: 5.0,),
+                                SizedBox(width: 5.0),
                                 FractionalTranslation(
                                   translation: Offset(0,0),
                                   child: SizedBox(
@@ -298,12 +300,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                       controller: _text1,
                                       textAlign: TextAlign.center,
                                       decoration: InputDecoration(
+                                        hintText: "ตัวเลข",
+                                        hintStyle: TextStyle(fontSize: 15,color: Colors.black38),
                                         labelStyle: GoogleFonts.mitr(
                                           textStyle: TextStyle(
                                               color: Colors.blue,
                                               fontSize: 15.0),
                                         ),
-                                        labelText: 'กรอกตัวเลข',
+                                        // labelText: 'กรอกตัวเลข',
                                         filled: true,
                                         fillColor: Colors.grey.shade50,
                                         errorText: _validate1 ? 'โปรดกรอกช่องนี้' : null,
@@ -341,8 +345,9 @@ class _MyHomePageState extends State<MyHomePage> {
                               children: [
                                 Container(
                                   width: 170,
+                                  height: 83,
                                   child: Expanded(
-                                    child: Text('ราคาน้ำมันดิบ ',style: GoogleFonts.mitr(
+                                    child: Text('กรอกราคาปัจจุบัน\nของราคาน้ำมันดิบ ',style: GoogleFonts.mitr(
                                       textStyle: TextStyle(
                                           color: Colors.black87,
                                           fontSize: 18.0),
@@ -368,20 +373,21 @@ class _MyHomePageState extends State<MyHomePage> {
                                       controller: _text2,
                                       textAlign: TextAlign.center,
                                       decoration: InputDecoration(
+                                        hintText: "ตัวเลข",
+                                        hintStyle: TextStyle(fontSize: 15,color: Colors.black38),
                                         labelStyle: GoogleFonts.mitr(
                                           textStyle: TextStyle(
                                               color: Colors.blue,
                                               fontSize: 15.0),
                                         ),
-                                        labelText: 'กรอกตัวเลข',
+                                        // labelText: 'กรอกตัวเลข',
                                         filled: true,
                                         fillColor: Colors.grey.shade50,
-                                        errorText: _validate2 ? 'โปรดกรอกช่องนี้' : null,
-                                        // errorStyle: GoogleFonts.mitr(
+                                        // errorStyl                                        errorText: _validate1 ? 'โปรดกรอกช่องนี้' : null,e: GoogleFonts.mitr(
                                         //   textStyle: TextStyle(
                                         //       color: Colors.red,
                                         //       fontSize: 12.0),
-                                        // ),
+                                        // )
                                       ),
                                       onChanged: (value) {
                                         valueOil=value;
@@ -403,14 +409,15 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                               ],
                             ),
-
                           ),
+
                           Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                            padding: const EdgeInsets.symmetric(horizontal: 8.0, ),
                             child: Row(
                                 children: [
                                   Container(
                                     width: 230,
+                                    height:83,
                                     child: Text('เลือกเดือนที่ต้องการทำนายผล ',style: GoogleFonts.mitr(
                                       textStyle: TextStyle(
                                           color: Colors.black87,
@@ -497,7 +504,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                     ),
                                   ),
+
                                 ]
+
                             ),
                           ),
 

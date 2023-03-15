@@ -157,7 +157,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       fontSize: 22.0),
                 ),
               ),
-              onPressed: () => {}
+              onPressed: () => {Navigator.pop(context)}
           ),
         ],
 
